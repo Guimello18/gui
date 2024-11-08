@@ -1,0 +1,14 @@
+name: C Build and Test
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: sudo apt-get install -y libxml2-dev
+      - name: Build the program
+        run: gcc read_nfe.c -o read_nfe -lxml2
+      - name: Run the program
+        run: ./read_nfe
